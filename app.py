@@ -92,14 +92,25 @@ st.title("📊 Similarity Explorer with Sentence Transformers")
 with st.sidebar:
     st.header("Settings")
     WORD_LIMIT = st.slider(
-        "Number of words to display in plot labels", min_value=1, max_value=10, value=4
+        "Max number of words to display in plot labels", min_value=1, max_value=10, value=4
     )
     run_button = st.button("▶️ Run Analysis")
 
 # Main: text area for user to paste items
-st.subheader("Input Items")
-st.write("Paste your items below, one per line (e.g., a list of abstracts).")
-text_input = st.text_area("Paste items here", height=200)
+default_items = """hiking
+biking
+running
+swimming
+campfires
+kite surfing
+base jumping
+free diving
+parachuting"""
+
+st.subheader("Just for fun")
+text_input = st.text_area("Type/paste your items here, one per line (e.g., your favourite activities).", 
+                          value=default_items, 
+                          height=200)
 
 if run_button:
     # Process pasted text into a list of items
