@@ -54,7 +54,7 @@ def plot_heatmap(sim_mat, items, word_limit):
     ax.set_yticks(range(n))
     ax.set_yticklabels(labels, fontsize=7)
     fig.colorbar(cax, ax=ax, shrink=0.7)
-    plt.title("Similarity Heatmap (Ward Linkage)")
+    plt.title("Similarity Heatmap")
     plt.tight_layout()
     return fig
 
@@ -66,7 +66,7 @@ def plot_dendrogram(sim_mat, items, word_limit):
 
     fig, ax = plt.subplots(figsize=(8, 8))
     dendrogram(linked, labels=labels, orientation='right', leaf_font_size=7)
-    plt.title("Hierarchical Clustering Dendrogram (Ward Linkage)")
+    plt.title("Hierarchical Clustering Dendrogram")
     plt.tight_layout()
     return fig
 
@@ -88,13 +88,11 @@ def plot_mds(sim_mat, items, word_limit):
 st.set_page_config(page_title="Similarity Explorer", layout="wide")
 st.title("📊 Similarity Explorer with Sentence Transformers")
 
-# Sidebar: parameter inputs
-with st.sidebar:
-    st.header("Settings")
-    WORD_LIMIT = st.slider(
-        "Max number of words to display in plot labels", min_value=1, max_value=10, value=4
-    )
-    run_button = st.button("▶️ Run Analysis")
+# --- Move these widgets into the main area, right under the title ----
+WORD_LIMIT = st.slider(
+    "Number of words to display in plot labels", min_value=1, max_value=10, value=4
+)
+run_button = st.button("▶️ Run Analysis")
 
 # Main: text area for user to paste items
 default_items = """hiking
