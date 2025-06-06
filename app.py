@@ -9,7 +9,7 @@ from sentence_transformers import SentenceTransformer
 
 # ----- CACHING THE MODEL -----
 @st.cache_resource(show_spinner=False)
-def load_model(model_name: str = 'sentence-transformers/all-mpnet-base-v2'):
+def load_model(model_name: str = 'sentence-transformers/all-MiniLM-L6-v2'):
     """Load and return the SentenceTransformer model (cached)."""
     return SentenceTransformer(model_name)
 
